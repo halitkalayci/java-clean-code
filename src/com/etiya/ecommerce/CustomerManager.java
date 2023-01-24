@@ -15,14 +15,19 @@ public class CustomerManager implements CustomerService{
         logger=databaseLogger;
     }
 
-    public void add(Customer customer){
-        // her add methodu çağırıldığında loglama yapacağız..
-        logger.log();
 
+    /**
+     * Validates customer, checks if there is customer with given name if not adds customer to the database.
+     * @param customer Customer information to add to database.
+     */
+    public void add(Customer customer){
+        logger.log();
         validateCustomer(customer);
         checkIfCustomerExistsInDatabase(customer.firstName);
         System.out.println(customer.firstName + " başarıyla eklendi.");
     }
+
+
     public void delete(Customer customer){
         checkIfCustomerExistsInDatabase(customer.firstName);
         System.out.println(customer.firstName + " başarıyla silindi..");
